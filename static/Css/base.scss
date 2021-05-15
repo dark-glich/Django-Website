@@ -1,6 +1,6 @@
 $Bacground-color:#0E182A;
 $primary-color:#6dd5ed;
-$title-font: 'Satisfy', cursive;
+$title-font: 'Fredoka One', cursive;
 $text-font:'Rubik', sans-serif;
 $white: rgba(122, 122, 122, 0.432);
 $title: 64px;
@@ -35,12 +35,11 @@ a{
           #title{
                color:$primary-color;
                font-family: $title-font;
-               font-size: 3.5rem;
+               font-size: 3rem;
                font-weight:400;
-               padding-left: 6rem;
-               line-height: 30px;
+               padding-left: 4rem;
+               line-height: 20px;
                padding-bottom:30px;
-               border-bottom: 0.4px solid $white;
           }
      }
      .main{
@@ -68,6 +67,7 @@ a{
 
                     &:hover{
                          background-color: $primary-color;
+                         box-shadow: 0 5px 15px #6dd5ed77;
                          color:$Bacground-color;
                          
                     }
@@ -81,6 +81,31 @@ a{
                margin-left: 2.5rem;
                font-weight: 500;
                line-height: 25px;
+          }
+
+          #heading{
+               margin-top: 1rem;
+               font-size:$title;
+               font-weight:900;
+               font-family: 'roboto';
+               margin-left: 2.5rem;
+
+               #glow{
+                    text-shadow: 5px 5px 1px $primary-color;
+               }
+          }
+          #button{
+               margin-left: 2.5rem;
+               font-size: $text;
+               color:$Bacground-color;
+               background-color: $primary-color;
+               padding:0.6rem 1rem;
+               border-radius:20px;
+               transition: box-shadow 500ms ease;
+
+               &:hover{
+                    box-shadow: 0 5px 15px #6dd5ed77;
+               }
           }
      }
 }
