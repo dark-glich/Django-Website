@@ -1,0 +1,67 @@
+$Bacground-color:#0E182A;
+$primary-color:#6dd5ed;
+$title-font: 'Satisfy', cursive;
+$text-font:'Rubik', sans-serif;
+$white: rgba(122, 122, 122, 0.432);
+$title: 64px;
+$text: 14px;
+
+@mixin normal-text {
+     color:white;
+     font-family: $text-font;
+     font-weight: 600;
+     font-size: $text;
+}
+
+body{
+     background-color: $Bacground-color
+}
+hr{
+     border-top: 0.4px solid $white;
+}
+
+.container{
+     @include normal-text();
+     display: grid;
+     grid-template-columns: 30% 70%;
+     grid-gap: 0.5px;
+     background-color: $white;
+     height: 93vh;
+
+     .sidebar{
+          background-color: $Bacground-color;
+
+          #title{
+               color:$primary-color;
+               font-family: $title-font;
+               font-size: 3.5rem;
+               font-weight:400;
+               padding-left: 6rem;
+               line-height: 30px;
+               padding-bottom:30px;
+               border-bottom: 0.4px solid $white;
+          }
+     }
+     .main{
+          background-color: $Bacground-color;
+
+          nav{
+               position:absolute;
+               top:0px;
+               display: flex;
+               justify-content: space-around;
+               padding:0.25rem;
+               width:67.5%;
+               background-color: $primary-color;
+
+               .mode{
+                    color:$Bacground-color;
+                    border: 2px solid $Bacground-color;
+                    padding:0.5rem;
+                    text-align: center;
+                    border-radius: 20px;
+                    width:5rem;
+               }
+          }
+     }
+}

@@ -1,0 +1,63 @@
+body {
+  background-color: #0E182A;
+}
+
+hr {
+  border-top: 0.4px solid rgba(122, 122, 122, 0.432);
+}
+
+.container {
+  color: white;
+  font-family: "Rubik", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 30% 70%;
+      grid-template-columns: 30% 70%;
+  grid-gap: 0.5px;
+  background-color: rgba(122, 122, 122, 0.432);
+  height: 93vh;
+}
+
+.container .sidebar {
+  background-color: #0E182A;
+}
+
+.container .sidebar #title {
+  color: #6dd5ed;
+  font-family: "Satisfy", cursive;
+  font-size: 3.5rem;
+  font-weight: 400;
+  padding-left: 6rem;
+  line-height: 30px;
+  padding-bottom: 30px;
+  border-bottom: 0.4px solid rgba(122, 122, 122, 0.432);
+}
+
+.container .main {
+  background-color: #0E182A;
+}
+
+.container .main nav {
+  position: absolute;
+  top: 0px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  padding: 0.25rem;
+  width: 67.5%;
+  background-color: #6dd5ed;
+}
+
+.container .main nav .mode {
+  color: #0E182A;
+  border: 2px solid #0E182A;
+  padding: 0.5rem;
+  text-align: center;
+  border-radius: 20px;
+  width: 5rem;
+}
+/*# sourceMappingURL=base.css.map */
