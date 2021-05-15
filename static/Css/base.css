@@ -2,8 +2,9 @@ body {
   background-color: #0E182A;
 }
 
-hr {
-  border-top: 0.4px solid rgba(122, 122, 122, 0.432);
+a {
+  text-decoration: none;
+  color: #6dd5ed;
 }
 
 .container {
@@ -13,8 +14,8 @@ hr {
   font-size: 14px;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 30% 70%;
-      grid-template-columns: 30% 70%;
+  -ms-grid-columns: 25% 75%;
+      grid-template-columns: 25% 75%;
   grid-gap: 0.5px;
   background-color: rgba(122, 122, 122, 0.432);
   height: 93vh;
@@ -45,19 +46,38 @@ hr {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-  padding: 0.25rem;
-  width: 67.5%;
-  background-color: #6dd5ed;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  padding: 0.5rem;
+  width: 73.8%;
+  border-bottom: 0.4px solid rgba(122, 122, 122, 0.432);
+  background-color: #0E182A;
 }
 
 .container .main nav .mode {
-  color: #0E182A;
-  border: 2px solid #0E182A;
-  padding: 0.5rem;
+  color: #6dd5ed;
+  border: 2px solid #6dd5ed;
+  padding: 0.35rem;
   text-align: center;
   border-radius: 20px;
-  width: 5rem;
+  width: 8rem;
+  -webkit-transition: background-color 500ms ease;
+  transition: background-color 500ms ease;
+  cursor: pointer;
+}
+
+.container .main nav .mode:hover {
+  background-color: #6dd5ed;
+  color: #0E182A;
+}
+
+.container .main #intro {
+  color: rgba(255, 255, 255, 0.712);
+  font-size: 15px;
+  position: relative;
+  margin-left: 2.5rem;
+  font-weight: 500;
+  line-height: 25px;
 }
 /*# sourceMappingURL=base.css.map */
