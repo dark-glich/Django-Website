@@ -7,18 +7,19 @@
           {{form.name}}
           {{form.email}}
           <div id="btns">
-               <button name="comment" type="submit" id="comment-btn">COMMENT</button>
-               <button id="cancel-btn">CANCEL</button>
+               <button name="_comment" type="submit" id="comment-btn">COMMENT</button>
+               <div id="cancel-btn">CANCEL</div>
           </div>
      </form>
      <div class='comment-container'>
           {%for comment in comments%}
           <div class="comment">
                <div>
-                    <span>{{comment.name}}</span>
-                    <span>{{comment.date_added|date:"d M, Y"}}</span>
+                    <span id="name">{{comment.name}}</span>
+                    <span id="date">{{comment.date_added|date:"d M, Y"}}</span>
+                    <div id="body">{{comment.comment}}</div>
+                    
                </div>
-               {{comment.comment}}
           </div>
           {% endfor %}
      </div>

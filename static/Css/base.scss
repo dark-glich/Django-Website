@@ -30,11 +30,10 @@ a{
      @include normal-text();
      display: grid;
      grid-template-columns: 25% 75%;
-     grid-gap: 0.5px;
-     background-color: $white;
      height: 93vh;
 
      .sidebar{
+          border-right:0.4px solid $white;
           background-color: $Bacground-color;
 
           #title{
@@ -185,7 +184,7 @@ a{
                text-align: center;
                border-radius: 20px;
                background-color: transparent;
-               width:7rem;
+               width:5rem;
                display:inline-block;
                transition: background-color 500ms ease;
                cursor: pointer;
@@ -208,4 +207,20 @@ a{
      border-radius: 5px;
      margin-top: 1.2rem;
      border-left: 2px solid $primary-color;
+
+     #name{
+          font-family: 'roboto';
+          font-size: 15px;
+          font-weight: 800;
+     }
+     #date{
+          color: rgba(255, 255, 255, 0.5);
+          font-size: 12px;
+          padding-left: 6px;
+     }
+     #body{
+          margin-top: 6px;
+          line-height: 150%;
+          color:rgba(255, 255, 255, 0.8);
+     }
 }

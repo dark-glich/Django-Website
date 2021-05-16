@@ -26,12 +26,11 @@ a {
   display: grid;
   -ms-grid-columns: 25% 75%;
       grid-template-columns: 25% 75%;
-  grid-gap: 0.5px;
-  background-color: rgba(122, 122, 122, 0.432);
   height: 93vh;
 }
 
 .container .sidebar {
+  border-right: 0.4px solid rgba(122, 122, 122, 0.432);
   background-color: #0E182A;
 }
 
@@ -201,7 +200,7 @@ a {
   text-align: center;
   border-radius: 20px;
   background-color: transparent;
-  width: 7rem;
+  width: 5rem;
   display: inline-block;
   -webkit-transition: background-color 500ms ease;
   transition: background-color 500ms ease;
@@ -222,5 +221,23 @@ a {
   border-radius: 5px;
   margin-top: 1.2rem;
   border-left: 2px solid #6dd5ed;
+}
+
+.comment #name {
+  font-family: 'roboto';
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.comment #date {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 12px;
+  padding-left: 6px;
+}
+
+.comment #body {
+  margin-top: 6px;
+  line-height: 150%;
+  color: rgba(255, 255, 255, 0.8);
 }
 /*# sourceMappingURL=base.css.map */
