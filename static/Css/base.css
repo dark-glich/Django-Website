@@ -1,3 +1,13 @@
+::-moz-selection {
+  background-color: black;
+  color: inherit;
+}
+
+::selection {
+  background-color: black;
+  color: inherit;
+}
+
 body {
   background-color: #0E182A;
 }
@@ -110,5 +120,107 @@ a {
 .container .main #button:hover {
   -webkit-box-shadow: 0 5px 15px #6dd5ed77;
           box-shadow: 0 5px 15px #6dd5ed77;
+}
+
+.main-section {
+  margin-top: 8rem;
+  font-weight: 900;
+}
+
+.main-section #margin {
+  border-top: 0.4px solid rgba(122, 122, 122, 0.432);
+}
+
+.main-section #title {
+  margin-left: 2.5rem;
+  padding-top: 1.5rem;
+  font-family: 'roboto';
+  font-size: 36px;
+}
+
+.main-section .comment-container {
+  margin-left: 2.5rem;
+  margin-bottom: 3rem;
+}
+
+.main-section .comment-container .comment-sec {
+  border: none;
+  outline: none;
+  width: 42%;
+  display: inline-block;
+  padding: 5px;
+  color: white;
+  font-size: 16px;
+  background-color: rgba(255, 255, 255, 0);
+  border-bottom: 1.2px solid white;
+  font-family: "Rubik", sans-serif;
+  -webkit-transition: border-bottom 300ms ease;
+  transition: border-bottom 300ms ease;
+  margin-bottom: 1rem;
+  border-radius: 2px;
+}
+
+.main-section .comment-container .comment-sec:focus {
+  border-bottom: 2.5px solid #6dd5ed;
+}
+
+.main-section .comment-container #body {
+  width: 86%;
+}
+
+.main-section #btns {
+  margin-top: 1rem;
+  display: none;
+}
+
+.main-section #btns #comment-btn {
+  outline: none;
+  border: none;
+  width: 7rem;
+  font-size: 14px;
+  color: #0E182A;
+  background-color: #6dd5ed;
+  padding: 0.6rem 1rem;
+  border-radius: 20px;
+  -webkit-transition: -webkit-box-shadow 500ms ease;
+  transition: -webkit-box-shadow 500ms ease;
+  transition: box-shadow 500ms ease;
+  transition: box-shadow 500ms ease, -webkit-box-shadow 500ms ease;
+}
+
+.main-section #btns #comment-btn:hover {
+  -webkit-box-shadow: 0 5px 15px #6dd5ed77;
+          box-shadow: 0 5px 15px #6dd5ed77;
+}
+
+.main-section #btns #cancel-btn {
+  margin-left: 1rem;
+  color: #6dd5ed;
+  border: 2px solid #6dd5ed;
+  padding: 0.5rem 1rem;
+  text-align: center;
+  border-radius: 20px;
+  background-color: transparent;
+  width: 7rem;
+  display: inline-block;
+  -webkit-transition: background-color 500ms ease;
+  transition: background-color 500ms ease;
+  cursor: pointer;
+}
+
+.main-section #btns #cancel-btn:hover {
+  background-color: #6dd5ed;
+  -webkit-box-shadow: 0 5px 15px #6dd5ed77;
+          box-shadow: 0 5px 15px #6dd5ed77;
+  color: #0E182A;
+}
+
+.comment {
+  background-color: rgba(255, 255, 255, 0.1);
+  width: 80%;
+  padding: 1rem;
+  border-radius: 5px;
+  margin-top: 1.2rem;
+  border-left: 2px solid #6dd5ed;
 }
 /*# sourceMappingURL=base.css.map */

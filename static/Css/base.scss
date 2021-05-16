@@ -1,3 +1,4 @@
+
 $Bacground-color:#0E182A;
 $primary-color:#6dd5ed;
 $title-font: 'Fredoka One', cursive;
@@ -11,6 +12,10 @@ $text: 14px;
      font-family: $text-font;
      font-weight: 600;
      font-size: $text;
+}
+::selection{
+     background-color: black;
+     color:inherit;
 }
 
 body{
@@ -108,4 +113,99 @@ a{
                }
           }
      }
+}
+
+.main-section{
+     margin-top:8rem;
+     font-weight:900;
+
+     #margin{
+          border-top:0.4px solid $white;
+     }
+
+     #title{
+          margin-left: 2.5rem;
+          padding-top:1.5rem;
+          font-family: 'roboto';
+          font-size: 36px;
+     }
+     .comment-container{
+          margin-left: 2.5rem;
+          margin-bottom: 3rem;
+
+          .comment-sec{
+               border:none;
+               outline:none;
+               width:42%;
+               display:inline-block;
+               padding:5px;
+               color:white;
+               font-size:16px;
+               background-color:rgba(255, 255, 255, 0);
+               border-bottom: 1.2px solid white;
+               font-family: $text-font;
+               transition: border-bottom 300ms ease;
+               margin-bottom:1rem;
+               border-radius:2px;
+
+               &:focus{
+                    border-bottom: 2.5px solid $primary-color;
+               }
+          }
+          #body{
+               width:86%;
+          }
+
+     }
+     #btns{
+          margin-top:1rem;
+          display: none;
+
+          #comment-btn{
+               outline:none;
+               border: none;
+               width:7rem;
+               font-size: $text;
+               color:$Bacground-color;
+               background-color: $primary-color;
+               padding:0.6rem 1rem;
+               border-radius:20px;
+               transition: box-shadow 500ms ease;
+     
+               &:hover{
+                    box-shadow: 0 5px 15px #6dd5ed77;
+               }
+          }
+     
+          #cancel-btn{
+               margin-left: 1rem;
+               color:$primary-color;
+               border: 2px solid $primary-color;
+               padding:0.5rem 1rem;
+               text-align: center;
+               border-radius: 20px;
+               background-color: transparent;
+               width:7rem;
+               display:inline-block;
+               transition: background-color 500ms ease;
+               cursor: pointer;
+     
+               &:hover{
+                    background-color: $primary-color;
+                    box-shadow: 0 5px 15px #6dd5ed77;
+                    color:$Bacground-color;
+                    
+               }    
+          }
+     }
+
+}
+
+.comment{
+     background-color: rgba(255, 255, 255, 0.1);
+     width:80%;
+     padding:1rem;
+     border-radius: 5px;
+     margin-top: 1.2rem;
+     border-left: 2px solid $primary-color;
 }

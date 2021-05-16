@@ -8,5 +8,5 @@ class Comment_Section(forms.ModelForm):
           widgets = {
                'name': forms.TextInput(attrs={'class': 'comment-sec', 'placeholder': 'Name'}),
                'email': forms.TextInput(attrs={'class': 'comment-sec', 'placeholder': 'Email'}),
-               'comment': forms.Textarea(attrs={'class': 'comment-sec', 'placeholder': 'Type your Comment'})
+               'comment': forms.TextInput(attrs={'class': 'comment-sec', 'id':'body','placeholder': 'Add a Comment'})
           }

@@ -1,1 +1,25 @@
-o0krkg
+
+<div class="main-section">
+     <div id="margin"></div>
+     <h1 id="title">Comments <span style="font-size: 50%; margin-left: 50%;" >{{count}} Comments</span></h1>
+     <form class="comment-container" method="POST">{%csrf_token%}
+          {{form.comment}}
+          {{form.name}}
+          {{form.email}}
+          <div id="btns">
+               <button name="comment" type="submit" id="comment-btn">COMMENT</button>
+               <button id="cancel-btn">CANCEL</button>
+          </div>
+     </form>
+     <div class='comment-container'>
+          {%for comment in comments%}
+          <div class="comment">
+               <div>
+                    <span>{{comment.name}}</span>
+                    <span>{{comment.date_added|date:"d M, Y"}}</span>
+               </div>
+               {{comment.comment}}
+          </div>
+          {% endfor %}
+     </div>
+</div>
