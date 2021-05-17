@@ -6,6 +6,7 @@
      <meta http-equiv="X-UA-Compatible" content="IE=edge">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <link rel="preconnect" href="https://fonts.gstatic.com">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
      <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Rubik:wght@300&display=swap" rel="stylesheet">
      <link rel="stylesheet" href="{% static 'Css/base.css'%}">
      <title>Cssify</title>
@@ -19,7 +20,7 @@
           
           <div class="main">
                <nav>
-                    <div class="mode">Font Style</div>
+                    <a href="{% url 'FontStyle'%}" class="mode">Font Style</a>
                     <div class="mode">Transform</div>
                     <div class="mode">FlexBox</div>
                     <div class="mode">Border</div>

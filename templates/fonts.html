@@ -1,0 +1,164 @@
+{% extends 'Acessories/base.html' %} 
+
+{% block sidebar %}  
+<div class="settings-container">
+     <div class="setting">Font family
+          <i class="fa fa-caret-down" id="icon"style="font-size:24px; float: right;"></i>
+          <div class="main-body">
+               <select id="font-family" class='range'>
+                    <option value="Arial" style="font-family: 'Arial', sans-serif;">Arial</option>
+                    <option value="serif"style="serif;">Serif</option>
+                    <option value="Helvetica" style="font-family:  Helvetica, sans-serif">Helvetica</option>
+                    <option value="Garamond " style="font-family: Garamond, serif;">Garamond</option>
+                    <option value="Courier New" style="font-family: 'Courier New', monospace;">Courier New</option>
+                    <option value="Verdana" style="font-family:Verdana, sans-serif;">Verdana</option>
+                    <option value="Trebuchet MS" style="font-family: 'Trebuchet MS', sans-serif;">Trebuchet MS</option>
+                    <option value="cursive" style="font-family: cursive;">Cursive</option>
+               </select>
+               <span class='output' style="display: none;"id="font-family">64px</span> 
+          </div> 
+     </div>
+
+     <div class="setting">
+          Font size <i class="fa fa-caret-down" style="font-size:24px; float: right;"></i>
+          <div class="main-body">
+               <input type="range" class="range" min="10" max="64" value="64" name="fontsize">
+               <span class='output' id="font-size">64px</span> 
+          </div> 
+     </div>
+
+     <div class="setting">
+          Letter Space
+          <i class="fa fa-caret-down" style="font-size:24px; float: right;"></i>
+          <div class="main-body">
+               <input type="range" class="range" min="-6" max="10" value="0">
+               <span class='output' id="letter-space">0px</span> 
+          </div> 
+     </div>
+     <div class="setting">Word Space 
+          <i class="fa fa-caret-down" style="font-size:24px; float: right;"></i>
+          <div class="main-body">
+               <input type="range" class="range" min="-10" max="15" value="0">
+               <span class='output' id="word-space">0px</span> 
+          </div> 
+     </div>
+     <div class="setting">
+          Color
+          <i class="fa fa-caret-down" style="font-size:24px; float: right;"></i>
+          <div class="main-body">
+               <input type="color" style="width:6rem" class="range" name="favcolor" value="#ffffff">
+               <span class='output' id="font-color">#FFFFFFF</span> 
+          </div> 
+     </div>
+     <div class="setting">
+          Font Weight
+          <i class="fa fa-caret-down" style="font-size:24px; float: right;"></i>
+          <div class="main-body">
+               <span class='option' id="font-weight">normal</span>
+               <span class='option' id="font-weight">bold</span>
+               <span class='option' id="font-weight">500</span>
+               <span class='option' id="font-weight">600</span>
+          </div> 
+     </div>
+     <div class="setting" >
+          Font Decoration
+          <i class="fa fa-caret-down" style="font-size:24px; float: right;"></i>
+          <div class="main-body">
+               <span class='option' id="font-decoration">underline</span>
+               <span class='option' id="font-decoration">none</span>
+               <span class='option' id="font-decoration">overline</span>
+               <span class='option' id="font-decoration">line-through</span>
+          </div> 
+     </div>
+     <div class="setting">
+          Font Style
+          <i class="fa fa-caret-down" style="font-size:24px; float: right;"></i>
+          <div class="main-body">
+               <span class='option' id="font-style">normal</span>
+               <span class='option' id="font-style">italic</span>
+          </div> 
+     </div>
+     <div class="setting">
+          Text Transform
+          <i class="fa fa-caret-down" style="font-size:24px; float: right;"></i>
+          <div class="main-body">
+               <span class='option' id="font-transfrom">none</span>
+               <span class='option' id="font-transfrom">uppercase</span>
+               <span class='option' id="font-transfrom">lowercase</span>
+               <span class='option' id="font-transfrom">capitalize</span>
+          </div> 
+     </div>
+</div>
+
+{% endblock sidebar %}
+
+{% block content %}
+<div id='intro' style="margin-top: 6rem;">Use different settings in sidebar to change the font styles of the text below. </div>
+<h1 id="heading">
+     in the beginning, Universe was created. This made
+     people angry and was
+     regarded as a bad move
+</h1>
+<a href="" target="_blank" id='button'> Generate Css </a>
+
+<script>
+     const input = document.getElementsByClassName('range');
+     const output = document.getElementsByClassName('output');
+     const heading = document.getElementById('heading');
+     const setting = document.getElementsByClassName('setting');
+     const options = document.getElementsByClassName('option');
+
+     for (let i = 0; i < setting.length; i++) {
+          setting.item(i).addEventListener('click', function () {
+               for (let j = 0; j < setting.item(i).childNodes.length; j++) {
+                    if(setting.item(i).childNodes[j].className == 'main-body'){
+                         setting.item(i).childNodes[j].style.display = 'block'
+                    }else if (setting.item(i).childNodes[j].className == 'fa fa-caret-down'){
+                         setting.item(i).childNodes[j].className = ''
+                    }
+               }
+          })
+     }
+     for (let i = 0; i < input.length; i++) {
+          input[i].oninput = function() {
+               output[i].innerHTML =  `${input[i].value}`;
+               //console.log(output.className)
+               if(output[i].id == 'font-size'){
+                    heading.style.fontSize = `${input[i].value}px`
+               }else if(output[i].id == 'letter-space'){
+                    heading.style.letterSpacing = `${input[i].value}px`
+               }else if(output[i].id == 'word-space'){
+                    heading.style.wordSpacing = `${input[i].value}px`
+               }else if (output[i].id == 'font-color'){
+                    heading.style.color = input[i].value
+               }else if (output[i].id == 'font-family'){
+                    heading.style.fontFamily = input[i].value
+               }
+          }
+     }
+     for (let i = 0; i < options.length; i++) {
+          options[i].addEventListener('click', function () {
+     
+               if(options[i].id == 'font-weight'){
+                    heading.style.fontWeight = options[i].innerHTML
+                    for (let j = 0; j < options.length; j++) {
+                         if (options[j] != options[i]){
+                              options[j].classList.remove("active");
+                         }else{
+                              options[i].classList.add("active");
+                         }
+                         
+                    }
+                    
+               }else if (options[i].id == 'font-decoration'){
+                    heading.style.textDecoration = `${options[i].innerHTML}`
+               }else if(options[i].id == 'font-style'){
+                    heading.style.fontStyle = `${options[i].innerHTML}`
+               }else if(options[i].id == 'font-transfrom'){
+                    heading.style.textTransform = `${options[i].innerHTML}`
+               }
+          })
+     }
+
+</script>
+{% endblock %}

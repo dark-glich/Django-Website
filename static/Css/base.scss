@@ -26,6 +26,19 @@ a{
      color:$primary-color;
 }
 
+input[type="color"] {
+	-webkit-appearance: none;
+	border: none;
+	width: 32px;
+	height: 20px;
+}
+input[type="color"]::-webkit-color-swatch-wrapper {
+	padding: 0;
+}
+input[type="color"]::-webkit-color-swatch {
+	border: none;
+}
+
 .container{
      @include normal-text();
      display: grid;
@@ -44,6 +57,80 @@ a{
                padding-left: 4rem;
                line-height: 20px;
                padding-bottom:30px;
+          }
+          .settings-container{
+               padding:1rem;
+
+               .setting{
+                    font-size:17px;
+                    padding:0.8rem 0px;
+                    border-bottom:0.4px solid $white;
+                    color:rgba(255, 255, 255, 0.9);
+                    cursor: pointer;
+                    transition: all 250ms ease;
+
+                    &:hover{
+                         color:$primary-color;
+                         font-weight: 600;
+                    }
+
+                    .main-body{
+                         display:none;
+                         padding: 0.5rem;
+
+                         .range{
+                              width:10rem;
+                         }
+
+                         #font-family{
+                              outline:none;
+                              border:none;
+                              height: 30px;
+                              border-radius: 10px;
+                              background-color: $Bacground-color;
+                              color:white;
+                              border:2px solid $primary-color;
+
+                              &:focus{
+                                   border:2px solid $primary-color;
+                              }
+                         }
+
+                         .output{
+                              background-color: $Bacground-color;
+                              margin-left: 5px;
+                              border: 2px solid $primary-color;
+                              border-radius: 10px;
+                              padding:0px 5px;
+                              color:$primary-color;    
+                         }
+                         .option{
+                              display: inline-block;
+                              background-color: $Bacground-color;
+                              margin:4px 2.5px;
+                              border: 2px solid $primary-color;
+                              border-radius: 10px;
+                              padding:0px 5px;
+                              color:$primary-color;
+
+                              &:hover{
+                                   background-color: $primary-color;
+                                   box-shadow: 0 5px 15px #6dd5ed77;
+                                   color:$Bacground-color;
+                                   
+                              }
+                         }
+                         .active{
+                              border: 2px solid $primary-color;
+                              border-radius: 10px;
+                              padding:0px 5px;
+                              margin:4px 2.5px;
+                              background-color: $primary-color;
+                              box-shadow: 0 5px 15px #6dd5ed77;
+                              color:$Bacground-color;
+                         }
+                    }
+               }
           }
      }
      .main{
@@ -87,12 +174,18 @@ a{
                line-height: 25px;
           }
 
+          #intro::before{
+               content: '*';
+               color: $primary-color;
+          }
+
           #heading{
                margin-top: 1rem;
                font-size:$title;
                font-weight:900;
                font-family: 'roboto';
                margin-left: 2.5rem;
+               min-height: 60px;
 
                #glow{
                     text-shadow: 5px 5px 1px $primary-color;
@@ -158,6 +251,7 @@ a{
      }
      #btns{
           margin-top:1rem;
+          transition:all 500ms ease;
           display: none;
 
           #comment-btn{

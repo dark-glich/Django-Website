@@ -17,6 +17,21 @@ a {
   color: #6dd5ed;
 }
 
+input[type="color"] {
+  -webkit-appearance: none;
+  border: none;
+  width: 32px;
+  height: 20px;
+}
+
+input[type="color"]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+input[type="color"]::-webkit-color-swatch {
+  border: none;
+}
+
 .container {
   color: white;
   font-family: "Rubik", sans-serif;
@@ -42,6 +57,85 @@ a {
   padding-left: 4rem;
   line-height: 20px;
   padding-bottom: 30px;
+}
+
+.container .sidebar .settings-container {
+  padding: 1rem;
+}
+
+.container .sidebar .settings-container .setting {
+  font-size: 17px;
+  padding: 0.8rem 0px;
+  border-bottom: 0.4px solid rgba(122, 122, 122, 0.432);
+  color: rgba(255, 255, 255, 0.9);
+  cursor: pointer;
+  -webkit-transition: all 250ms ease;
+  transition: all 250ms ease;
+}
+
+.container .sidebar .settings-container .setting:hover {
+  color: #6dd5ed;
+  font-weight: 600;
+}
+
+.container .sidebar .settings-container .setting .main-body {
+  display: none;
+  padding: 0.5rem;
+}
+
+.container .sidebar .settings-container .setting .main-body .range {
+  width: 10rem;
+}
+
+.container .sidebar .settings-container .setting .main-body #font-family {
+  outline: none;
+  border: none;
+  height: 30px;
+  border-radius: 10px;
+  background-color: #0E182A;
+  color: white;
+  border: 2px solid #6dd5ed;
+}
+
+.container .sidebar .settings-container .setting .main-body #font-family:focus {
+  border: 2px solid #6dd5ed;
+}
+
+.container .sidebar .settings-container .setting .main-body .output {
+  background-color: #0E182A;
+  margin-left: 5px;
+  border: 2px solid #6dd5ed;
+  border-radius: 10px;
+  padding: 0px 5px;
+  color: #6dd5ed;
+}
+
+.container .sidebar .settings-container .setting .main-body .option {
+  display: inline-block;
+  background-color: #0E182A;
+  margin: 4px 2.5px;
+  border: 2px solid #6dd5ed;
+  border-radius: 10px;
+  padding: 0px 5px;
+  color: #6dd5ed;
+}
+
+.container .sidebar .settings-container .setting .main-body .option:hover {
+  background-color: #6dd5ed;
+  -webkit-box-shadow: 0 5px 15px #6dd5ed77;
+          box-shadow: 0 5px 15px #6dd5ed77;
+  color: #0E182A;
+}
+
+.container .sidebar .settings-container .setting .main-body .active {
+  border: 2px solid #6dd5ed;
+  border-radius: 10px;
+  padding: 0px 5px;
+  margin: 4px 2.5px;
+  background-color: #6dd5ed;
+  -webkit-box-shadow: 0 5px 15px #6dd5ed77;
+          box-shadow: 0 5px 15px #6dd5ed77;
+  color: #0E182A;
 }
 
 .container .main {
@@ -91,12 +185,18 @@ a {
   line-height: 25px;
 }
 
+.container .main #intro::before {
+  content: '*';
+  color: #6dd5ed;
+}
+
 .container .main #heading {
   margin-top: 1rem;
   font-size: 64px;
   font-weight: 900;
   font-family: 'roboto';
   margin-left: 2.5rem;
+  min-height: 60px;
 }
 
 .container .main #heading #glow {
@@ -169,6 +269,8 @@ a {
 
 .main-section #btns {
   margin-top: 1rem;
+  -webkit-transition: all 500ms ease;
+  transition: all 500ms ease;
   display: none;
 }
 
