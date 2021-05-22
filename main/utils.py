@@ -1,5 +1,6 @@
 from .models import CommentSection
 from .forms import Comment_Section
+from django.shortcuts import render
 
 def Commments(request):
      form = Comment_Section(request.POST or None)
@@ -12,3 +13,7 @@ def Commments(request):
      count= CommentSection.objects.all().count()
      
      return {'count':count,'comments':comments,'form':form}
+
+def ViewGenerator(request, file):
+     comment_section = Commments(request)
+     return render(request, file, comment_section)

@@ -1,0 +1,146 @@
+{% extends 'Acessories/base.html' %} 
+{% load static %}
+
+{% block sidebar %}  
+<div class="settings-container">
+     <div class="setting">Flex Direction
+          <i class="fa fa-caret-down" id="icon"style="font-size:24px; float: right;"></i>
+          <div class="main-body">
+               <select id="flex-direction" class='range'>
+                    <option value="row">Row</option>
+                    <option value="row-reverse">Row Reverse</option>
+                    <option value="column">Column</option>
+                    <option value="column-reverse">Column Reverse</option>
+               </select>
+               <span class='output' style="display: none;"id="flex-direction"></span> 
+          </div> 
+     </div>
+
+     <div class="setting">
+          Gap
+          <i class="fa fa-caret-down" style="font-size:24px; float: right;"></i>
+          <div class="main-body">
+               <input type="range" class="range" min="1" max="45" value="5" name="fontsize">
+               <span class='output' id="flex-gap">5</span>
+          </div> 
+     </div>
+
+     <div class="setting">
+          Flex Wrap
+          <i class="fa fa-caret-down" style="font-size:24px; float: right;"></i>
+          <div class="main-body">
+               <span class='option' id="flex-wrap">wrap</span>
+               <span class='option' id="flex-wrap">wrap-reverse</span>
+               <span class='option' id="flex-wrap">nowrap</span>
+          </div> 
+     </div>
+
+     <div class="setting"> Justify Content
+          <i class="fa fa-caret-down" id="icon"style="font-size:24px; float: right;"></i>
+          <div class="main-body">
+               <select id="flex-justify" class='range'>
+                    <option value="flex-start">flex-start</option>
+                    <option value="flex-end">flex-end</option>
+                    <option value="center">center</option>
+                    <option value="space-between">space-between</option>
+                    <option value="space-around">space-around</option>
+                    <option value="space-evenly">space-evenly</option>
+               </select>
+               <span class='output' style="display: none;"id="flex-justify"></span> 
+          </div> 
+     </div>
+
+     <div class="setting"> Align Items
+          <i class="fa fa-caret-down" id="icon"style="font-size:24px; float: right;"></i>
+          <div class="main-body">
+               <select id="flex-align" class='range'>
+                    <option value="flex-start">flex-start</option>
+                    <option value="flex-end">flex-end</option>
+                    <option value="center">center</option>
+                    <option value="baseline">baseline</option>
+                    <option value="stretch">stretch</option>
+               </select>
+               <span class='output' style="display: none;"id="flex-align"></span> 
+          </div> 
+     </div>
+
+</div>
+
+{% endblock sidebar %}
+
+{% block content %}
+<div id='intro' style="margin-top: 6rem;">Use different settings in sidebar to change properties of the flex container below.  </div>
+<div id="flex-box" style="border-color: #6dd5ede8;">
+     <div class="flex-item" style="padding: 2.5rem 3rem;">1</div>
+     <div class="flex-item">2</div>
+     <div class="flex-item" style="padding: 2.5rem 3rem;">3</div>
+     <div class="flex-item">4</div>
+     <div class="flex-item" style="padding: 2.5rem 3rem;">5</div>
+     <div class="flex-item">6</div>
+</div>
+<span id='button' style="cursor: pointer;" > Generate Css </span>
+<div id="result-container">
+     <div class="result" id="result">
+          <div id="note">Click To Copy Css</div>
+          <div>display:flex;</div>
+          <div id='flex-direction2'>flex-direction: row;</div>
+          <div id='flex-gap2'>gap:5px;</div>
+          <div id='flex-wrap2'>flex-wrap: wrap;</div>
+          <div id='flex-justify2'>justify-content: space-evenly;</div>
+          <div id='flex-align2'>align-items: center;</div>
+     </div>
+</div>
+<script src="{%static 'Javascript/main.js'%}"></script>
+<script>
+     (() =>{
+          x = document.getElementById('FlexStyle');
+          x.classList.add("cliked");
+          x.style.color = '#0E182A'
+          
+     })()
+
+     const box = document.getElementById('flex-box');
+
+     
+     for (let i = 0; i < input.length; i++) {
+          input[i].oninput = function() {
+               output[i].innerHTML =  `${input[i].value}`;
+               if(output[i].id == 'flex-direction'){
+                    box.style.flexDirection = input[i].value
+                    document.getElementById('flex-direction2').innerText = `flex-direction: ${input[i].value};` 
+               }
+               else if(output[i].id == 'flex-gap'){
+                    box.style.gap = `${input[i].value}px`
+                    document.getElementById('flex-gap2').innerText = `gap: ${input[i].value}px;` 
+               }
+               else if(output[i].id == 'flex-justify'){
+                    box.style.justifyContent = `${input[i].value}`
+                    document.getElementById('flex-justify2').innerText = `justify-content: ${input[i].value};` 
+               }
+               else if(output[i].id == 'flex-align'){
+                    box.style.alignItems = `${input[i].value}`
+                    document.getElementById('flex-align2').innerText = `align-items: ${input[i].value};` 
+               }
+          }
+          
+     }
+     for (let i = 0; i < options.length; i++) {
+          options[i].addEventListener('click', function () {
+     
+               if(options[i].id == 'flex-wrap'){
+                    box.style.flexWrap = options[i].innerHTML;
+                    document.getElementById('flex-wrap2').innerText = `flex-wrap: ${options[i].innerHTML};` 
+                    for (let j = 0; j < options.length; j++) {
+                         if (options[j] != options[i]){
+                              options[j].classList.remove("active");
+                         }else{
+                              options[i].classList.add("active");
+                         }
+                    }
+                    
+               }
+          })
+     }
+     
+</script>
+{% endblock %}

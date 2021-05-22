@@ -1,0 +1,175 @@
+{% extends 'Acessories/base.html' %} 
+{% load static %}
+
+{% block sidebar %}  
+<div class="settings-container">
+     <div class="setting">Border Style
+          <i class="fa fa-caret-down" id="icon"style="font-size:24px; float: right;"></i>
+          <div class="main-body">
+               <select id="border-style" class='range'>
+                    <option value="solid">Solid</option>
+                    <option value="dotted">Dotted</option>
+                    <option value="dashed">Dashed</option>
+                    <option value="double">Double</option>
+                    <option value="groove">Groove</option>
+                    <option value="ridge">Ridge</option>
+                    <option value="inset">Inset</option>
+                    <option value="outset">Outset</option>
+                    <option value="none">None</option>
+               </select>
+               <span class='output' style="display: none;"id="border-style"></span> 
+          </div> 
+     </div>
+
+     <div class="setting">
+          Border Width
+          <i class="fa fa-caret-down" style="font-size:24px; float: right;"></i>
+          <div class="main-body">
+               <input type="range" class="range" min="1" max="40" value="15" name="fontsize">
+               <span class='output' id="border-width">15</span>
+          </div> 
+     </div>
+
+     <div class="setting">
+          Transparency
+          <i class="fa fa-caret-down" style="font-size:24px; float: right;"></i>
+          <div class="main-body">
+               <input type="range" class="range" min="0" step="0.01" max="1" value="01">
+               <span class='output' id="transparency">1</span> 
+          </div> 
+     </div>
+     <div class="setting">
+          Border Color
+          <i class="fa fa-caret-down" style="font-size:24px; float: right;"></i>
+          <div class="main-body">
+               <input type="color" style="width:6rem" class="range" name="favcolor" value="#ffffff">
+               <span class='output' id="border-color">#FFFFFFF</span> 
+          </div> 
+     </div>
+     <div class="setting" >
+          Border Radius
+          <i class="fa fa-caret-down" style="font-size:24px; float: right;"></i>
+          <div class="main-body">
+               <div class="setting">
+                    <span>Top Left : </span>
+                    <i class="fa fa-caret-down" style="font-size:24px; float: right;"></i>
+                    <div class="main-body">
+                         <input type="range" class='range' min="0" max="200" value="15">
+                         <span class='output' id="radius-top-left">15</span>
+                    </div>
+               </div>
+
+               <div class="setting">
+                    <span>Bottom Left : </span>
+                    <i class="fa fa-caret-down" style="font-size:24px; float: right;"></i>
+                    <div class="main-body">
+                         <input type="range"class='range' min="0" max="200" value="15">
+                         <span class='output' id="radius-bottom-left">15</span>
+                    </div>
+               </div>
+
+               <div class="setting">
+                    <span>Top Right : </span>
+                    <i class="fa fa-caret-down" style="font-size:24px; float: right;"></i>
+                    <div class="main-body">
+                         <input type="range"class='range' min="0" max="200" value="15">
+                         <span class='output' id="radius-top-right">15</span>
+                    </div>
+               </div>
+
+               <div class="setting" style="border-bottom:none">
+                    <span>Bottom Right : </span>
+                    <i class="fa fa-caret-down" style="font-size:24px; float: right;"></i>
+                    <div class="main-body">
+                         <input type="range"class='range' min="0" max="200" value="15">
+                         <span class='output'id="radius-bottom-right">15</span>
+                    </div>
+               </div>
+          </div> 
+     </div>
+</div>
+
+{% endblock sidebar %}
+
+{% block content %}
+<div id='intro' style="margin-top: 6rem;">Use different settings in sidebar to change the style of border given below.  </div>
+<div id="box" style="border-color: #6dd5ede8;"></div>
+<span id='button' style="cursor: pointer;" > Generate Css </span>
+<div id="result-container">
+     <div class="result" id="result">
+          <div id="note">Click To Copy Css</div>
+          <div id='border-style2'>border-style: solid;</div>
+          <div id='border-width2'>border-width: 3px;</div>
+          <div id='border-color2'>border-color: #6dd5ed;</div>
+          <div id='radius-top-left2'>border-top-left-radius:15px;</div>
+          <div id='radius-bottom-left2'>border-bottom-left-radius:15px;</div>
+          <div id='radius-top-right2'>border-top-right-radius:15px;</div>
+          <div id='radius-bottom-right2'>border-bottom-right-radius:15px;</div>
+     </div>
+</div>
+
+<script src="{%static 'Javascript/main.js'%}"></script>
+<script>
+     (() =>{
+          x = document.getElementById('BorderStyle');
+          x.classList.add("cliked");
+          x.style.color = '#0E182A'
+          
+     })()
+
+     const box = document.getElementById('box');
+     
+     for (let i = 0; i < input.length; i++) {
+          input[i].oninput = function() {
+               output[i].innerHTML =  `${input[i].value}`;
+               if(output[i].id == 'border-width'){
+                    document.getElementById('border-width2').innerText = `border-width: ${input[i].value}px;`
+                    box.style.borderWidth = `${input[i].value}px`
+               }
+               else if(output[i].id == 'transparency'){
+                    let color = box.style.borderColor 
+                    let ocurrence = (color.match(/,/g)).length
+                    if (ocurrence == 3){
+                         color = color.substring(0, color.length - 5)
+                         color = `${color}${input[i].value})`
+                         box.style.borderColor = color
+                    }else{
+                         color = color.substring(0, color.length - 1)
+                         color = `${color}, ${input[i].value})`
+                         box.style.borderColor = color
+                    }
+                    document.getElementById('border-color2').innerText = `border-color: ${color}`
+
+               }
+               else if(output[i].id == 'radius-top-left'){
+                    box.style.borderTopLeftRadius = `${input[i].value}px`
+                    document.getElementById('radius-top-left2').innerText = `border-top-left-radius:${input[i].value}px;`
+                    
+               }
+               else if(output[i].id == 'radius-bottom-left'){
+                    box.style.borderBottomLeftRadius = `${input[i].value}px`
+                    document.getElementById('radius-bottom-left2').innerText = `border-bottom-left-radius:${input[i].value}px;`
+               }
+               else if(output[i].id == 'radius-top-right'){
+                    box.style.borderTopRightRadius = `${input[i].value}px`
+                    document.getElementById('radius-top-right2').innerText = `border-top-right-radius:${input[i].value}px;`
+               }
+               else if(output[i].id == 'radius-bottom-right'){
+                    box.style.borderBottomRightRadius = `${input[i].value}px`
+                    document.getElementById('radius-bottom-right2').innerText = `border-bottom-right-radius:${input[i].value}px;`
+               }
+
+               else if (output[i].id == 'border-color'){
+                    box.style.borderColor = input[i].value
+                    document.getElementById('border-color2').innerText = `border-color: ${input[i].value};`
+
+               }else if (output[i].id == 'border-style'){
+                    box.style.borderStyle = input[i].value
+                    document.getElementById('border-style2').innerText = `border-style: ${input[i].value};`
+               }
+          }
+          
+     }
+      
+</script>
+{% endblock %}

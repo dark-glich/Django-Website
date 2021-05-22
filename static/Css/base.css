@@ -1,15 +1,17 @@
 ::-moz-selection {
-  background-color: black;
-  color: inherit;
+  background-color: white;
+  color: black;
 }
 
 ::selection {
-  background-color: black;
-  color: inherit;
+  background-color: white;
+  color: black;
 }
 
 body {
   background-color: #0E182A;
+  -webkit-perspective: 1000px;
+          perspective: 1000px;
 }
 
 a {
@@ -30,6 +32,10 @@ input[type="color"]::-webkit-color-swatch-wrapper {
 
 input[type="color"]::-webkit-color-swatch {
   border: none;
+}
+
+.cliked {
+  background-color: #6dd5ed;
 }
 
 .container {
@@ -87,7 +93,12 @@ input[type="color"]::-webkit-color-swatch {
   width: 10rem;
 }
 
-.container .sidebar .settings-container .setting .main-body #font-family {
+.container .sidebar .settings-container .setting .main-body #border-radius {
+  width: 10rem;
+  margin-bottom: 10px;
+}
+
+.container .sidebar .settings-container .setting .main-body select {
   outline: none;
   border: none;
   height: 30px;
@@ -97,7 +108,7 @@ input[type="color"]::-webkit-color-swatch {
   border: 2px solid #6dd5ed;
 }
 
-.container .sidebar .settings-container .setting .main-body #font-family:focus {
+.container .sidebar .settings-container .setting .main-body select:focus {
   border: 2px solid #6dd5ed;
 }
 
@@ -203,8 +214,86 @@ input[type="color"]::-webkit-color-swatch {
   text-shadow: 5px 5px 1px #6dd5ed;
 }
 
+.container .main #box {
+  margin: 2.5rem;
+  margin-bottom: 2rem;
+  margin-top: 1.5rem;
+  height: 18rem;
+  color: transparent;
+  border-width: 15px;
+  border-style: solid;
+  border-color: #6dd5ed;
+  border-radius: 15px;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.container .main #flex-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 2.5rem;
+  margin-bottom: 2rem;
+  margin-top: 1.5rem;
+  height: 18rem;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 10px 0px;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  border: 3px solid #6dd5ed;
+  gap: 5px;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  border-radius: 15px;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.container .main #flex-box .flex-item {
+  background-color: #6dd5ed;
+  font-size: 24px;
+  padding: 1.5rem 2rem;
+  margin: 0px 1px;
+  border-radius: 50%;
+  color: white;
+}
+
+.container .main #shadow-box {
+  margin: 32%;
+  margin-bottom: 4rem;
+  margin-top: 5rem;
+  height: 18rem;
+  width: 19rem;
+  color: transparent;
+  border-radius: 10px;
+  -webkit-box-shadow: rgba(122, 122, 122, 0.432) 27px 19px 10px 2px;
+          box-shadow: rgba(122, 122, 122, 0.432) 27px 19px 10px 2px;
+  background-color: #6dd5ed;
+}
+
+.container .main #transform-box {
+  margin: 32%;
+  margin-bottom: 6rem;
+  margin-top: 5rem;
+  height: 16rem;
+  width: 17rem;
+  color: transparent;
+  border-radius: 30px;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-transform: translateX(0px) translateY(0px) translateZ(0px) scaleX(1) scaleY(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skewX(0deg) skewY(0deg);
+          transform: translateX(0px) translateY(0px) translateZ(0px) scaleX(1) scaleY(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skewX(0deg) skewY(0deg);
+  background-image: radial-gradient(circle, white, #6dd5ed);
+}
+
 .container .main #button {
   margin-left: 2.5rem;
+  z-index: 1;
   font-size: 14px;
   color: #0E182A;
   background-color: #6dd5ed;
@@ -219,6 +308,40 @@ input[type="color"]::-webkit-color-swatch {
 .container .main #button:hover {
   -webkit-box-shadow: 0 5px 15px #6dd5ed77;
           box-shadow: 0 5px 15px #6dd5ed77;
+}
+
+.container .main #result-container {
+  display: none;
+}
+
+.container .main #result-container .result {
+  min-height: 10rem;
+  border: 0.4px solid rgba(122, 122, 122, 0.432);
+  margin: 4rem 2.5rem;
+  padding: 20px;
+  font-size: 16px;
+  background-color: rgba(255, 255, 255, 0.123);
+  border-radius: 10px;
+  line-height: 20px;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.9);
+  -webkit-transition: margin 250ms ease;
+  transition: margin 250ms ease;
+}
+
+.container .main #result-container .result #note {
+  text-align: center;
+  color: #6dd5ed;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.container .main #result-container .result:active {
+  -webkit-transform: scaleX(0.85) scaleY(0.85);
+          transform: scaleX(0.85) scaleY(0.85);
 }
 
 .main-section {

@@ -1,0 +1,198 @@
+{% extends 'Acessories/base.html' %} 
+{% load static %}
+
+{% block sidebar %}  
+<div class="settings-container">
+     <div class="setting" >
+          Translate
+          <i class="fa fa-caret-down" style="font-size:24px; float: right;"></i>
+          <div class="main-body">
+               <div class="setting">
+                    <span>translate X : </span>
+                    <i class="fa fa-caret-down" style="font-size:24px; float: right;"></i>
+                    <div class="main-body">
+                         <input type="range" class='range' min="-130" max="200" value="0">
+                         <span class='output' id="translate-x">0</span>
+                    </div>
+               </div>
+
+               <div class="setting">
+                    <span>translate Y: </span>
+                    <i class="fa fa-caret-down" style="font-size:24px; float: right;"></i>
+                    <div class="main-body">
+                         <input type="range"class='range' min="-50" max="50" value="0">
+                         <span class='output' id="translate-y">0</span>
+                    </div>
+               </div>
+
+               <div class="setting">
+                    <span>translate Z: </span>
+                    <i class="fa fa-caret-down" style="font-size:24px; float: right;"></i>
+                    <div class="main-body">
+                         <input type="range"class='range' min="-200" max="200" value="15">
+                         <span class='output' id="translate-z">15</span>
+                    </div>
+               </div>
+          </div> 
+     </div>
+     <div class="setting" >
+          Scale
+          <i class="fa fa-caret-down" style="font-size:24px; float: right;"></i>
+          <div class="main-body">
+               <div class="setting">
+                    <span>scale X :</span>
+                    <i class="fa fa-caret-down" style="font-size:24px; float: right;"></i>
+                    <div class="main-body">
+                         <input type="range" class='range' min="-2" max="2" step="0.1" value="0">
+                         <span class='output' id="scale-x">0</span>
+                    </div>
+               </div>
+
+               <div class="setting">
+                    <span>scale Y : </span>
+                    <i class="fa fa-caret-down" style="font-size:24px; float: right;"></i>
+                    <div class="main-body">
+                         <input type="range" class='range' min="-1.5" max="1.5" step="0.1" value="0">
+                         <span class='output' id="scale-y">0</span>
+                    </div>
+               </div>
+          </div> 
+     </div>
+     <div class="setting" >
+          Rotate
+          <i class="fa fa-caret-down" style="font-size:24px; float: right;"></i>
+          <div class="main-body">
+               <div class="setting">
+                    <span>Rotate X : </span>
+                    <i class="fa fa-caret-down" style="font-size:24px; float: right;"></i>
+                    <div class="main-body">
+                         <input type="range" class='range' min="-360" max="360" value="0">
+                         <span class='output' id="rotate-x">0</span>
+                    </div>
+               </div>
+
+               <div class="setting">
+                    <span>Rotate Y : </span>
+                    <i class="fa fa-caret-down" style="font-size:24px; float: right;"></i>
+                    <div class="main-body">
+                         <input type="range"class='range' min="-360" max="360" value="0">
+                         <span class='output' id="rotate-y">0</span>
+                    </div>
+               </div>
+
+               <div class="setting">
+                    <span>Rotate Z : </span>
+                    <i class="fa fa-caret-down" style="font-size:24px; float: right;"></i>
+                    <div class="main-body">
+                         <input type="range"class='range' min="-360" max="360" value="0">
+                         <span class='output' id="rotate-z">0</span>
+                    </div>
+               </div>
+          </div> 
+     </div>
+     <div class="setting" >
+          Skew
+          <i class="fa fa-caret-down" style="font-size:24px; float: right;"></i>
+          <div class="main-body">
+               <div class="setting">
+                    <span>Skew X : </span>
+                    <i class="fa fa-caret-down" style="font-size:24px; float: right;"></i>
+                    <div class="main-body">
+                         <input type="range" class='range' min="-50" max="50" value="0">
+                         <span class='output' id="skew-x">0</span>
+                    </div>
+               </div>
+
+               <div class="setting">
+                    <span>Skew Y : </span>
+                    <i class="fa fa-caret-down" style="font-size:24px; float: right;"></i>
+                    <div class="main-body">
+                         <input type="range"class='range' min="-30" max="30" value="0">
+                         <span class='output' id="skew-y">0</span>
+                    </div>
+               </div>
+          </div> 
+     </div>
+</div>
+
+{% endblock sidebar %}
+
+{% block content %}
+<div id='intro' style="margin-top: 6rem;">Use different settings in sidebar to change the style of border given below.  </div>
+<div id="transform-box" style="border-color: #6dd5ede8;"></div>
+<span id='button' style="cursor: pointer;" > Generate Css </span>
+<div id="result-container">
+     <div class="result" style="min-height:4rem; padding-bottom: 30px;" id="result">
+          <div id="note">Click To Copy Css</div>
+          <div id='box-shadow' style="margin-top: 20px;">
+          transform: translateX(0px) translateY(0px) translateZ(0px) scaleX(1) scaleY(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skewX(0deg) skewY(0deg);
+          </div>
+     </div>
+</div>
+
+<script src="{%static 'Javascript/main.js'%}"></script>
+<script>
+     const box = document.getElementById('transform-box');
+     let transform = ' ';
+     (() =>{
+          x = document.getElementById('TransformStyle');
+          x.classList.add("cliked");
+          x.style.color = '#0E182A'
+          
+     })()
+
+
+     function BoxTransform(index, input) {
+          x = transform.split(' ');
+          x[index] = input;
+          x = x.join(" ");
+          console.log(x)
+          transform = x.replace(/\s+/g, ' ');
+          document.getElementById('box-shadow').innerText = `transform: ${transform};`
+          return x
+     }
+     
+     for (let i = 0; i < input.length; i++) {
+          input[i].oninput = function() {
+               output[i].innerHTML =  `${input[i].value}`;
+               if(output[i].id == 'translate-x'){
+                    box.style.transform = BoxTransform(0, `translateX(${input[i].value}px)`); 
+               }
+               else if(output[i].id == 'translate-y'){
+                    box.style.transform = BoxTransform(1, `translateY(${input[i].value}px)`);
+               }
+               else if(output[i].id == 'translate-z'){
+                    box.style.transform = BoxTransform(2, `translateZ(${input[i].value}px)`);
+               }
+
+               else if(output[i].id == 'scale-x'){
+                    box.style.transform = BoxTransform(3, `scaleX(${input[i].value})`);
+               }
+               else if(output[i].id == 'scale-y'){
+                    box.style.transform = BoxTransform(4, `scaleY(${input[i].value})`);
+               }
+               else if(output[i].id == 'scale-y'){
+                    box.style.transform = BoxTransform(5, `scaleZ(${input[i].value})`);
+               }
+
+               else if(output[i].id == 'rotate-x'){
+                    box.style.transform = BoxTransform(6, `rotateX(${input[i].value}deg)`);
+               }
+               else if(output[i].id == 'rotate-y'){
+                    box.style.transform = BoxTransform(7, `rotateY(${input[i].value}deg)`);
+               }
+               else if(output[i].id == 'rotate-z'){
+                    box.style.transform = BoxTransform(8, `rotateZ(${input[i].value}deg)`);
+               }
+
+               else if(output[i].id == 'skew-x'){
+                    box.style.transform = BoxTransform(9, `skewX(${input[i].value}deg)`);
+               }
+               else if(output[i].id == 'skew-y'){
+                    box.style.transform = BoxTransform(10, `skewY(${input[i].value}deg)`);
+               }
+          }
+          
+     }
+</script>
+{% endblock %}

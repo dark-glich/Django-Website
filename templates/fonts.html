@@ -1,4 +1,5 @@
 {% extends 'Acessories/base.html' %} 
+{% load static %}
 
 {% block sidebar %}  
 <div class="settings-container">
@@ -15,15 +16,15 @@
                     <option value="Trebuchet MS" style="font-family: 'Trebuchet MS', sans-serif;">Trebuchet MS</option>
                     <option value="cursive" style="font-family: cursive;">Cursive</option>
                </select>
-               <span class='output' style="display: none;"id="font-family">64px</span> 
+               <span class='output' style="display: none;"id="font-family"></span> 
           </div> 
      </div>
 
      <div class="setting">
           Font size <i class="fa fa-caret-down" style="font-size:24px; float: right;"></i>
           <div class="main-body">
-               <input type="range" class="range" min="10" max="64" value="64" name="fontsize">
-               <span class='output' id="font-size">64px</span> 
+               <input type="range" class="range" min="10" max="82" value="64" name="fontsize">
+               <span class='output' id="font-size">64</span> 
           </div> 
      </div>
 
@@ -32,14 +33,14 @@
           <i class="fa fa-caret-down" style="font-size:24px; float: right;"></i>
           <div class="main-body">
                <input type="range" class="range" min="-6" max="10" value="0">
-               <span class='output' id="letter-space">0px</span> 
+               <span class='output' id="letter-space">0</span> 
           </div> 
      </div>
      <div class="setting">Word Space 
           <i class="fa fa-caret-down" style="font-size:24px; float: right;"></i>
           <div class="main-body">
                <input type="range" class="range" min="-10" max="15" value="0">
-               <span class='output' id="word-space">0px</span> 
+               <span class='output' id="word-space">0</span> 
           </div> 
      </div>
      <div class="setting">
@@ -99,47 +100,61 @@
      people angry and was
      regarded as a bad move
 </h1>
-<a href="" target="_blank" id='button'> Generate Css </a>
+<span id='button' style="cursor: pointer;" > Generate Css </span>
+<div id="result-container">
+     <div class="result" id="result">
+          <div id="note">Click To Copy Css</div>
+          <div id='font-family2'>font-family: 'roboto';</div>
+          <div id='font-size2'>font-size: 64px;</div>
+          <div id='letter-space2'>letter-spacing: 0px;</div>
+          <div id='word-space2'>word-spacing: 0px;</div>
+          <div id='font-color2'>color: rgb(255, 255, 255);</div>
+          <div id='font-weight2'>font-weight: 900;</div>
+          <div id='font-decoration2'>text-decoration: none;</div>
+          <div id='font-style2'>font-style: normal;</div>
+          <div id='font-transfrom2'>text-transform: none;</div>
+     </div>
+     
+</div>
 
+<script src="{%static 'Javascript/main.js'%}"></script>
 <script>
-     const input = document.getElementsByClassName('range');
-     const output = document.getElementsByClassName('output');
-     const heading = document.getElementById('heading');
-     const setting = document.getElementsByClassName('setting');
-     const options = document.getElementsByClassName('option');
+     (() =>{
+          x = document.getElementById('FontStyle');
+          x.classList.add("cliked");
+          x.style.color = '#0E182A'
+          
+     })()
 
-     for (let i = 0; i < setting.length; i++) {
-          setting.item(i).addEventListener('click', function () {
-               for (let j = 0; j < setting.item(i).childNodes.length; j++) {
-                    if(setting.item(i).childNodes[j].className == 'main-body'){
-                         setting.item(i).childNodes[j].style.display = 'block'
-                    }else if (setting.item(i).childNodes[j].className == 'fa fa-caret-down'){
-                         setting.item(i).childNodes[j].className = ''
-                    }
-               }
-          })
-     }
+     const heading = document.getElementById('heading');     
+
      for (let i = 0; i < input.length; i++) {
           input[i].oninput = function() {
                output[i].innerHTML =  `${input[i].value}`;
-               //console.log(output.className)
                if(output[i].id == 'font-size'){
+                    document.getElementById('font-size2').innerText = `font-size: ${input[i].value}px ;`;
                     heading.style.fontSize = `${input[i].value}px`
                }else if(output[i].id == 'letter-space'){
+                    document.getElementById('letter-space2').innerText = `letter-spacing: ${input[i].value}px ;`;
                     heading.style.letterSpacing = `${input[i].value}px`
                }else if(output[i].id == 'word-space'){
+                    document.getElementById('word-space2').innerText = `word-spacing: ${input[i].value}px ;`;
                     heading.style.wordSpacing = `${input[i].value}px`
                }else if (output[i].id == 'font-color'){
+                    document.getElementById('font-color2').innerText = `color: ${input[i].value};`;
                     heading.style.color = input[i].value
                }else if (output[i].id == 'font-family'){
+                    document.getElementById('font-family2').innerText = `font-family: ${input[i].value} ;`;
                     heading.style.fontFamily = input[i].value
                }
           }
+          
      }
      for (let i = 0; i < options.length; i++) {
           options[i].addEventListener('click', function () {
      
                if(options[i].id == 'font-weight'){
+                    document.getElementById('font-weight2').innerText = `font-weight: ${options[i].innerHTML} ;`;
                     heading.style.fontWeight = options[i].innerHTML
                     for (let j = 0; j < options.length; j++) {
                          if (options[j] != options[i]){
@@ -147,18 +162,23 @@
                          }else{
                               options[i].classList.add("active");
                          }
-                         
                     }
                     
                }else if (options[i].id == 'font-decoration'){
                     heading.style.textDecoration = `${options[i].innerHTML}`
+                    document.getElementById('font-decoration2').innerText = `text-decoration: ${options[i].innerHTML} ;`;
+                    
                }else if(options[i].id == 'font-style'){
                     heading.style.fontStyle = `${options[i].innerHTML}`
+                    document.getElementById('font-style2').innerText = `font-style: ${options[i].innerHTML} ;`;
+                    
                }else if(options[i].id == 'font-transfrom'){
                     heading.style.textTransform = `${options[i].innerHTML}`
+                    document.getElementById('font-transfrom2').innerText = `text-transform: ${options[i].innerHTML} ;`;
+                    
                }
           })
      }
-
+     
 </script>
 {% endblock %}

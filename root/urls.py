@@ -20,5 +20,9 @@ from main import views
 urlpatterns = [
     path('', views.HomeView, name='Home'),
     path('fonts/', views.FontStyleView, name='FontStyle'),
+    path('border/', views.BorderStyleView, name='BorderStyle'),
+    path('flexbox/', views.FlexStyleView, name='FlexStyle'),
+    path('boxshadow/', views.ShadowStyleView, name='ShadowStyle'),
+    path('transform/', views.TransformStyleView, name='TransformStyle'),
     path('admin/', admin.site.urls),
 ]

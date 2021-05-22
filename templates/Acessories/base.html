@@ -20,17 +20,16 @@
           
           <div class="main">
                <nav>
-                    <a href="{% url 'FontStyle'%}" class="mode">Font Style</a>
-                    <div class="mode">Transform</div>
-                    <div class="mode">FlexBox</div>
-                    <div class="mode">Border</div>
-                    <div class="mode">Box Shadow</div>
+                    <a id="FontStyle" href="{% url 'FontStyle'%}" class="mode">Font Style</a>
+                    <a id="BorderStyle" href="{% url 'BorderStyle'%}" class="mode">Border</a>
+                    <a id="FlexStyle" href="{% url 'FlexStyle'%}" class="mode">FlexBox</a>
+                    <a id="ShadowStyle" href="{% url 'ShadowStyle'%}" class="mode">Box Shadow</a>
+                    <a id="TransformStyle" href="{% url 'TransformStyle'%}" class="mode">Transform</a>
                </nav>
                {% block content %}  {% endblock %}
                {% include 'Acessories/coment-section.html' %}
           </div>
           
      </div>
-     <script src="{%static 'Javascript/main.js'%}"></script>
 </body>
 </html>

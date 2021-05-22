@@ -1,0 +1,111 @@
+{% extends 'Acessories/base.html' %} 
+{% load static %}
+
+{% block sidebar %}  
+<div class="settings-container">
+
+     <div class="setting">
+          Horizontal Shift
+          <i class="fa fa-caret-down" style="font-size:24px; float: right;"></i>
+          <div class="main-body">
+               <input type="range" class="range" min="-70" max="70" value="27" name="fontsize">
+               <span class='output' id="shadow-horizontal">27</span>
+          </div> 
+     </div>
+
+     <div class="setting">
+          Vertical Shift
+          <i class="fa fa-caret-down" style="font-size:24px; float: right;"></i>
+          <div class="main-body">
+               <input type="range" class="range" min="-70" max="70" value="19" name="fontsize">
+               <span class='output' id="shadow-vertical">19</span>
+          </div> 
+     </div>
+
+     <div class="setting">
+          Shadow Spread
+          <i class="fa fa-caret-down" style="font-size:24px; float: right;"></i>
+          <div class="main-body">
+               <input type="range" class="range" min="0" max="40" value="2" name="fontsize">
+               <span class='output' id="shadow-spread">2</span>
+          </div> 
+     </div>
+
+     <div class="setting">
+          Blur
+          <i class="fa fa-caret-down" style="font-size:24px; float: right;"></i>
+          <div class="main-body">
+               <input type="range" class="range" min="0" max="50" value="10" name="fontsize">
+               <span class='output' id="shadow-blur">10</span>
+          </div> 
+     </div>
+
+     <div class="setting">
+          Color
+          <i class="fa fa-caret-down" style="font-size:24px; float: right;"></i>
+          <div class="main-body">
+               <input type="color" style="width:6rem" class="range" name="favcolor" value="#000000">
+               <span class='output' id="shadow-color">#000000</span> 
+          </div> 
+     </div>
+</div>
+
+{% endblock sidebar %}
+
+{% block content %}
+<div id='intro' style="margin-top: 6rem;">Use different settings in sidebar to change the style of border given below.  </div>
+<div id="shadow-box" style="border-color: #6dd5ede8;"></div>
+<span id='button' style="cursor: pointer;" > Generate Css </span>
+<div id="result-container">
+     <div class="result" style="min-height:1rem;" id="result">
+          <div id="note">Click To Copy Css</div>
+          <div id='box-shadow' style="margin-top: 20px;"> box-shadow: rgba(122,122,122,0.43) 27px 19px 10px 2px ;</div>
+     </div>
+</div>
+<script src="{%static 'Javascript/main.js'%}"></script>
+<script>
+     (() =>{
+          x = document.getElementById('ShadowStyle');
+          x.classList.add("cliked");
+          x.style.color = '#0E182A'
+          
+     })()
+
+     const box = document.getElementById('shadow-box');
+     let shadow = 'rgba(122,122,122,0.43) 27px 19px 10px 2px'
+
+     function SplitStr(index, input) {
+          x = shadow.split(' ');
+          x[index] = input;
+          x = x.join(" ");
+          document.getElementById('box-shadow').innerText = `box-shadow: ${x} ;`
+          shadow = x;
+          return x
+     }
+
+     
+     box.style.boxShadow = shadow
+     for (let i = 0; i < input.length; i++) {
+          input[i].oninput = function() {
+               output[i].innerHTML =  `${input[i].value}`;
+               if(output[i].id == 'shadow-horizontal'){
+                    box.style.boxShadow = SplitStr(1, `${input[i].value}px`)
+               }
+               else if(output[i].id == 'shadow-vertical'){
+                    box.style.boxShadow = SplitStr(2, `${input[i].value}px`)
+               }
+               else if(output[i].id == 'shadow-blur'){
+                    box.style.boxShadow = SplitStr(3, `${input[i].value}px`)
+               }
+               else if(output[i].id == 'shadow-spread'){
+                    box.style.boxShadow = SplitStr(4, `${input[i].value}px`)
+               }
+               else if(output[i].id == 'shadow-color'){
+                    box.style.boxShadow = SplitStr(0, `${input[i].value}`)
+               }
+          }
+          
+     }
+     
+</script>
+{% endblock %}

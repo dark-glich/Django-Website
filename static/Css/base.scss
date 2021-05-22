@@ -14,12 +14,13 @@ $text: 14px;
      font-size: $text;
 }
 ::selection{
-     background-color: black;
-     color:inherit;
+     background-color: white;
+     color:black;
 }
 
 body{
-     background-color: $Bacground-color
+     background-color: $Bacground-color;
+     perspective: 1000px;
 }
 a{
      text-decoration: none;
@@ -38,7 +39,9 @@ input[type="color"]::-webkit-color-swatch-wrapper {
 input[type="color"]::-webkit-color-swatch {
 	border: none;
 }
-
+.cliked{
+     background-color: $primary-color;
+}
 .container{
      @include normal-text();
      display: grid;
@@ -81,8 +84,14 @@ input[type="color"]::-webkit-color-swatch {
                          .range{
                               width:10rem;
                          }
+                         #border-radius{
+                              width: 10rem;
+                              margin-bottom: 10px;
+                              
+                         }
 
-                         #font-family{
+                         
+                         select{
                               outline:none;
                               border:none;
                               height: 30px;
@@ -191,8 +200,70 @@ input[type="color"]::-webkit-color-swatch {
                     text-shadow: 5px 5px 1px $primary-color;
                }
           }
+          #box{
+               margin: 2.5rem;
+               margin-bottom: 2rem;
+               margin-top: 1.5rem;
+               height:18rem;
+               color:transparent;
+               border-width: 15px;
+               border-style:solid;
+               border-color: $primary-color;
+               border-radius: 15px;
+               background-color: rgba(255, 255, 255, 0.1);
+          }
+          #flex-box{
+               display:flex;
+               margin: 2.5rem;
+               margin-bottom: 2rem;
+               margin-top: 1.5rem;
+               height:18rem;
+               justify-content: space-evenly;
+               align-items: center;
+               padding:10px 0px;
+               flex-direction: row;
+               border: 3px solid $primary-color;
+               gap:5px;
+               flex-wrap: wrap; 
+               border-radius: 15px;
+               background-color: rgba(255, 255, 255, 0.1);
+
+               .flex-item{
+                    background-color: $primary-color;
+                    font-size:24px;
+                    padding:1.5rem 2rem;
+                    margin:0px 1px;
+                    border-radius: 50%;
+                    color:white;
+               }
+          }
+          #shadow-box{
+               margin: 32%;
+               margin-bottom: 4rem;
+               margin-top: 5rem;
+               height:18rem;
+               width:19rem;
+               color:transparent;
+               border-radius: 10px;
+               box-shadow: $white 27px 19px 10px 2px ;
+               background-color:$primary-color;
+          }
+          #transform-box{
+               margin: 32%;
+               margin-bottom: 6rem;
+               margin-top: 5rem;
+               height:16rem;
+               width:17rem;
+               color:transparent;
+               border-radius: 30px;
+               transform-style: preserve-3d;
+               transform: translateX(0px) translateY(0px) translateZ(0px) scaleX(1) scaleY(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skewX(0deg) skewY(0deg);
+               background-image: radial-gradient(circle, white, $primary-color);
+
+          }
           #button{
                margin-left: 2.5rem;
+               z-index:1;
                font-size: $text;
                color:$Bacground-color;
                background-color: $primary-color;
@@ -202,6 +273,35 @@ input[type="color"]::-webkit-color-swatch {
 
                &:hover{
                     box-shadow: 0 5px 15px #6dd5ed77;
+               }
+          }
+          #result-container{
+               display:none;
+               .result{
+                    min-height:10rem;
+                    border:0.4px solid $white;
+                    margin: 4rem 2.5rem;
+                    padding:20px;
+                    font-size: 16px;
+                    background-color: rgba(255, 255, 255, 0.123);
+                    border-radius: 10px;
+                    line-height: 20px;
+                    cursor:pointer;
+                    color:rgba(255, 255, 255, 0.9);
+                    transition: margin 250ms ease;
+
+                    #note{
+                         text-align: center;
+                         color: #6dd5ed;
+                         -webkit-touch-callout:none;
+                         -webkit-user-select:none;
+                         -moz-user-select:none;
+                         -ms-user-select:none;
+                         user-select:none;
+                    }
+                    &:active{
+                         transform: scaleX(0.85) scaleY(0.85);
+                    }
                }
           }
      }
